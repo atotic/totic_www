@@ -531,6 +531,27 @@ http://www.webhistory.org/www.lists/www-html.1994q4/</a>)..."</quote></p>
 
 The demos no longer work, but it's still fun to read.
 </quote></p>
-The original Mosaic Communication Corporation <a href='http://www.dotnetat.net/mozilla/mcom.10.1994/MCOM/index2.html'>home page</a>.
+The original Mosaic Communication Corporation <a href='http://home.mcom.com/'>home page</a> with progressive gifs.
 </pre>
-<p>Archived by <a href='http://www.totic.org/'>totic.org</a> and <a href='http://www.meer.net/'>meer.net</a>.</p>
+<p>Archived by <a href='http://www.totic.org/'>totic.org</a> 
+
+<script>
+// 2024 addition: JS is needed to play inline audio
+function playAudio(ev) {
+  ev.preventDefault();
+  let mp3href = ev.currentTarget.href.replace(/au$/, "mp3");
+  document.querySelectorAll("audio").forEach(el => el.remove());
+  let audio = new Audio(mp3href);
+  // Did not want a stylesheet in this old doc
+  audio.style = "position:fixed;top:16px;right:16px"; 
+  audio.controls = true;
+  audio.addEventListener("canplaythrough", _ => audio.play());
+  audio.addEventListener("ended", _ => audio.remove());
+  document.body.append(audio);
+}
+
+document.querySelectorAll("A").forEach( el => {
+  if (el.href.match(".*\.au$"))
+     el.addEventListener("click", playAudio);
+});
+</script>
